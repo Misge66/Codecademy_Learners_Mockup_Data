@@ -1,0 +1,44 @@
+SELECT * FROM users;
+SELECT * FROM progress;
+
+-- What are the Top 25 schools (.edu domains)? 
+ SELECT * FROM users WHERE email_domain LIKE '%.edu' LIMIT 25; 
+-- OR 
+SELECT DISTINCT email_domain FROM users WHERE email_domain LIKE '%.edu' LIMIT 25;
+
+
+-- How many .edu learners are located in New York?
+SELECT COUNT(*) AS 'Total Number Of .edu located in New York ' FROM users WHERE city = 'New York' AND email_domain LIKE '%.edu';
+
+-- Counting how many codecademy learner using the Mobile App
+-- SELECT mobile_app FROM users WHERE mobile_app = 'mobile-user' OR mobile_app = '';
+SELECT count(mobile_app) FROM users WHERE mobile_app = 'mobile-user' OR mobile_app IS NULL;
+
+SELECT sign_up_at, strftime('%H', sign_up_at) FROM users GROUP BY 1 LIMIT 20;
+-- OR 
+SELECT sign_up_at, strftime('%H', sign_up_at) FROM users GROUP BY 2 ORDER BY 1 DESC LIMIT 20;
+
+-- New York Students that taking CPP course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_sql = 'started';
+
+-- New York Students that taking SQL course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_html = 'started';
+
+-- New York Students that taking JAVASCRIPT course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_javascript = 'started';
+
+-- New York Students that taking JAVA course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_java FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_java = 'started';
+
+
+-- Chicago Students that taking CPP course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_sql = 'started';
+
+-- Chicago Students that taking SQL course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_html = 'started';
+
+-- Chicago Students that taking JAVASCRIPT course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_javascript = 'started';
+
+-- Chicago Students that taking JAVA course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_java FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_java = 'started';
