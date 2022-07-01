@@ -19,9 +19,12 @@ SELECT sign_up_at, strftime('%H', sign_up_at) FROM users GROUP BY 1 LIMIT 20;
 SELECT sign_up_at, strftime('%H', sign_up_at) FROM users GROUP BY 2 ORDER BY 1 DESC LIMIT 20;
 
 -- New York Students that taking CPP course;
-SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_sql = 'started';
+SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_cpp = 'started';
 
 -- New York Students that taking SQL course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_sql = 'started';
+
+-- New York Students that taking HTML course;
 SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_html = 'started';
 
 -- New York Students that taking JAVASCRIPT course;
@@ -31,10 +34,14 @@ SELECT users.user_id,progress.user_id, users.city, progress.learn_javascript FRO
 SELECT users.user_id,progress.user_id, users.city, progress.learn_java FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'New York' AND learn_java = 'started';
 
 
+
 -- Chicago Students that taking CPP course;
-SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_sql = 'started';
+SELECT users.user_id,progress.user_id, users.city, progress.learn_sql FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_cpp = 'started';
 
 -- Chicago Students that taking SQL course;
+SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_sql = 'started';
+
+-- Chicago Students that taking HTML course;
 SELECT users.user_id,progress.user_id, users.city, progress.learn_html FROM users JOIN progress ON users.user_id = progress.user_id WHERE city = 'Chicago' AND learn_html = 'started';
 
 -- Chicago Students that taking JAVASCRIPT course;
